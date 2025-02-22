@@ -1,0 +1,67 @@
+Elastic Beanstalk
+
+Choose Create application
+
+Give a unique name (like USERID_A_EB)
+
+Create environment
+
+Select Web Server Environment
+
+Choose Platform - PHP
+
+Under Presets - Select Single instance (using spot instance)
+
+Click Next
+
+Select Existing service roles - s3-Fullroles
+
+Select  EC2 instance profile - s3-Fullroles
+
+Click Next
+
+In Setup networking page - DO NOT SELECT ANYTHING - leave default - Click Next
+
+Under Root Volume (Boot Device) - Select GENERAL PURPOSE 3(SSD) - VERY IMPORTANT
+
+In the bottom click Skip to Review 
+
+Click SUBMIT
+
+wait for 5-10 mins and application will be created
+
+Domain will showing on the screen and click on the domain to open the DEFAULT WEBSITE CREATED. (Take a screenshot 1 and paste into a Word file)
+
+
+
+Codepipeline
+
+Create Pipeline
+Select Build Custom Pipeline
+Give a unique name (USERID_A_PIPELINE)
+Go to the bottom and click next
+Under Source provider - Select Github (via Github App)
+Under connect select - Connect to Github
+A New popup window will open - Create a new github connection (unique name) - Install app - authorize - 
+Come back to pipeline creation window
+Under connection select the new github connection you just now created
+Under Repository name - select your right repository - (Example:  userid/aws-codepipeline-s3-codedeploy-linux)
+Under default branch - select master
+Click Next 
+Click Skip build stage
+Click Skip test stage
+Under Deploy - Select AWS Elastic Beanstalk
+Select the region where EB was created above
+Select the application name (you created in above step)
+Select the environment
+Click Next
+Click Create pipeline
+After sometime the pipeline will start running (look for the 2 small tick marks on right side of the page)
+Once both ticks appear - open the Elastic Bean stalk web page (Take URL from Domain option) and check if your Github index.html contents are showing here - (Take a screenshot 2 and paste in word file)
+Check if automated pipeline is working
+
+
+
+Go To Github
+Make some changes in index.html (Add some content or change color)
+Come back to pipeline page and see if it is running (look for two green ticks on right top)
